@@ -61,7 +61,7 @@ function ContactMenu() {
 }
 
 const links = [
-  { label: "Privacy Policy", href: "#" },
+  { label: "Privacy Policy", href: "/privacy" },
 ];
 
 export function Footer() {
