@@ -50,9 +50,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {cards.map((card) => {
-          const Icon = card.icon;
-          return (
+        {cards.map((card) => (
             <Link
               key={card.href}
               href={card.href}
@@ -63,15 +61,14 @@ export default function DashboardPage() {
               ) : (
                 <>
                   <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${card.gradient} mb-4`}>
-                    <Icon className="h-5 w-5 text-white" />
+                    {card.icon && <card.icon className="h-5 w-5 text-white" />}
                   </div>
                   <h3 className="text-base font-semibold text-slate-900 mb-1">{card.label}</h3>
                 </>
               )}
               <p className="text-sm text-slate-500">{card.description}</p>
             </Link>
-          );
-        })}
+          ))}
       </div>
     </div>
   );
