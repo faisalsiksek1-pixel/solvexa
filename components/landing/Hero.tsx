@@ -36,10 +36,10 @@ export function Hero() {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-[clamp(2.8rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight text-white">
-              Stop guessing.
+              Mathematics,
               <br />
               <span className="relative inline-block">
-                <span className="gradient-text-hero">Start solving.</span>
+                <span className="gradient-text-hero">understood.</span>
                 <svg
                   className="absolute -bottom-2 sm:-bottom-3 left-0 w-full"
                   viewBox="0 0 300 12"
@@ -78,10 +78,10 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
               </Link>
               <Link
-                href="/login"
+                href="#how-it-works"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:text-white"
               >
-                Sign in
+                How it works
               </Link>
             </div>
 
