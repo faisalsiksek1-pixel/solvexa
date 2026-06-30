@@ -36,7 +36,7 @@ export function Hero() {
             </p>
 
             {/* Logo as headline */}
-            <SolvexaAILogo className="text-[3rem] sm:text-[4rem] lg:text-[clamp(3rem,6vw,5rem)]" />
+            <SolvexaAILogo white className="text-[3rem] sm:text-[4rem] lg:text-[clamp(3rem,6vw,5rem)]" />
 
             {/* Subtext */}
             <p className="mt-8 text-sm sm:text-base leading-relaxed text-white/50">

@@ -1,15 +1,18 @@
 import { cn } from "@/utils/cn";
 
-export function SolvexaAILogo({ className }: { className?: string }) {
+export function SolvexaAILogo({ className, white = false }: { className?: string; white?: boolean }) {
+  const main = white ? "text-white" : "text-slate-900";
+  const blue = white ? "text-blue-300" : "text-blue-600";
+  const ai = white ? "text-blue-300" : "text-brand-600";
   return (
     <span
       className={cn("select-none leading-none", className)}
       style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic" }}
     >
-      <span className="text-slate-900">∫</span>
-      <span className="text-blue-600">θ</span>
-      <span className="text-slate-900">lvexa</span>
-      <span className="not-italic font-bold text-brand-600 ml-1 text-[0.7em] align-middle tracking-wide">AI</span>
+      <span className={main}>∫</span>
+      <span className={blue}>θ</span>
+      <span className={main}>lvexa</span>
+      <span className={cn("not-italic font-bold ml-1 text-[0.7em] align-middle tracking-wide", ai)}>AI</span>
     </span>
   );
 }
