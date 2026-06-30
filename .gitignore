@@ -5,3 +5,8 @@ out/
 .env.local
 .DS_Store
 *.tsbuildinfo
+src/
+dist/
+index.html
+vite.config.ts
+tsconfig.node.json
