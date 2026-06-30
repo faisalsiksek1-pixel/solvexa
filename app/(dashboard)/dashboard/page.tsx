@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Users, MessageSquare, Timer } from "lucide-react";
+import { Users, MessageSquare, Timer, LucideIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { SolvexaAILogo } from "@/components/ui/Logo";
 
-const cards = [
+const cards: { label: string; description: string; href: string; icon: LucideIcon | null; gradient: string }[] = [
   {
     label: "Solvexa AI",
     description: "Get step-by-step solutions to any math problem.",
