@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HeroGraph } from "./HeroGraph";
+import { SolvexaAILogo } from "@/components/ui/Logo";
 
 
 export function Hero() {
@@ -30,38 +31,12 @@ export function Hero() {
           {/* ── LEFT ── */}
           <div className="flex flex-col items-start">
             {/* Motto */}
-            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
+            <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
               Learn · Get unstuck · Help others
             </p>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[clamp(2.8rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight text-white">
-              Learn, get unstuck,
-              <br />
-              <span className="relative inline-block">
-                <span className="gradient-text-hero">help others.</span>
-                <svg
-                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full"
-                  viewBox="0 0 300 12"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M2 7 C30 2, 60 12, 90 7 S150 2, 180 7 S240 12, 270 7 S295 4, 298 6"
-                    stroke="url(#squiggleGrad)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                  <defs>
-                    <linearGradient id="squiggleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#6366f1" />
-                      <stop offset="100%" stopColor="#a78bfa" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </span>
-            </h1>
+            {/* Logo as headline */}
+            <SolvexaAILogo className="text-[3rem] sm:text-[4rem] lg:text-[clamp(3rem,6vw,5rem)]" />
 
             {/* Subtext */}
             <p className="mt-8 text-sm sm:text-base leading-relaxed text-white/50">
