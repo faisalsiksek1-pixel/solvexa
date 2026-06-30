@@ -10,6 +10,7 @@ import {
   ChevronRight,
   GraduationCap,
   Inbox,
+  LucideIcon,
 } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { Avatar } from "@/components/ui/Avatar";
@@ -17,7 +18,7 @@ import { Logo, SolvexaAILogo } from "@/components/ui/Logo";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-const navItems = [
+const navItems: { label: string; href: string; icon: LucideIcon | null; custom: boolean }[] = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, custom: false },
   { label: "Solvexa AI", href: "/solve", icon: null, custom: true },
   { label: "Tutors", href: "/tutors", icon: Users, custom: false },
@@ -46,7 +47,7 @@ export function Sidebar() {
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5">
         {navItems.map((item) => {
-          const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+          const isActive = pathname === item.href || (pathname?.startsWith(item.href + "/") ?? false);
 
           return (
             <Link
@@ -61,12 +62,7 @@ export function Sidebar() {
                 <SolvexaAILogo className="text-[1rem]" />
               ) : (
                 <>
-                  <item.icon
-                    className={cn(
-                      "h-4 w-4 shrink-0",
-                      isActive ? "text-brand-600" : "text-slate-500"
-                    )}
-                  />
+                  {item.icon && <item.icon className={cn("h-4 w-4 shrink-0", isActive ? "text-brand-600" : "text-slate-500")} />}
                   <span className="flex-1">{item.label}</span>
                 </>
               )}
