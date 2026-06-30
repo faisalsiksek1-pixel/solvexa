@@ -2,51 +2,75 @@
 
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { useState } from "react";
 import { Logo } from "@/components/ui/Logo";
+import { Mail, Lock, User, ArrowRight } from "lucide-react";
 
 export default function SignupPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <div className="min-h-screen bg-slate-50 flex">
-      {/* Left panel */}
-      <div className="hidden lg:flex flex-1 items-center justify-center bg-gradient-to-br from-violet-700 to-brand-600 px-16 relative overflow-hidden">
-        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-white/5" />
-        <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/5" />
-        <div className="relative text-center max-w-md">
-          <div className="mb-8 space-y-3">
-            {["∑ Mathematics", "∫ Calculus", "θ Trigonometry", "σ Statistics"].map((s, i) => (
-              <div key={s} className="rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-3 text-left" style={{ marginLeft: `${i % 2 === 0 ? 0 : 24}px` }}>
-                <p className="text-white font-semibold">{s}</p>
-              </div>
-            ))}
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-sm">
+        <Link href="/" className="inline-block mb-10">
+          <Logo />
+        </Link>
+
+        <h1 className="text-2xl font-bold text-slate-900 mb-1">Create your account</h1>
+        <p className="text-sm text-slate-500 mb-8">Free to start — no credit card required.</p>
+
+        {/* Google */}
+        <button
+          onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+          className="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm mb-4"
+        >
+          <GoogleIcon />
+          Sign up with Google
+        </button>
+
+        <div className="relative mb-4">
+          <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
+          <div className="relative flex justify-center text-xs"><span className="bg-slate-50 px-4 text-slate-400">or sign up with email</span></div>
+        </div>
+
+        {/* Email form */}
+        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">Full name</label>
+            <div className="relative">
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+              <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Your name"
+                className="w-full rounded-xl border border-slate-200 bg-white pl-9 pr-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-400 transition" />
+            </div>
           </div>
-          <h2 className="text-3xl font-bold text-white mb-4">Every topic. <br />Every step. Explained.</h2>
-          <p className="text-white/70 leading-relaxed">Start for free and join thousands of students mastering mathematics.</p>
-        </div>
-      </div>
-
-      {/* Right panel */}
-      <div className="flex flex-1 flex-col justify-center px-8 py-12 sm:px-12 lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm">
-          <Link href="/" className="inline-block mb-10">
-            <Logo />
-          </Link>
-
-          <h1 className="text-2xl font-bold text-slate-900 mb-1">Create your account</h1>
-          <p className="text-sm text-slate-500 mb-8">Free to start — no credit card required.</p>
-
-          <button
-            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-            className="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
-          >
-            <GoogleIcon />
-            Sign up with Google
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">Email address</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="you@example.com"
+                className="w-full rounded-xl border border-slate-200 bg-white pl-9 pr-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-400 transition" />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Min. 8 characters"
+                className="w-full rounded-xl border border-slate-200 bg-white pl-9 pr-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-400 transition" />
+            </div>
+          </div>
+          <button type="submit"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-brand-600 py-3 text-sm font-semibold text-white hover:bg-brand-700 transition">
+            Create account <ArrowRight className="h-4 w-4" />
           </button>
+        </form>
 
-          <p className="mt-8 text-center text-sm text-slate-500">
-            Already have an account?{" "}
-            <Link href="/login" className="font-semibold text-brand-600 hover:text-brand-700">Sign in</Link>
-          </p>
-        </div>
+        <p className="mt-6 text-center text-sm text-slate-500">
+          Already have an account?{" "}
+          <Link href="/login" className="font-semibold text-brand-600 hover:text-brand-700">Sign in</Link>
+        </p>
       </div>
     </div>
   );
