@@ -52,7 +52,8 @@ function MemberProfile({ member, myId, onClose, onDM }: { member: Member; myId: 
 export default function CommunityChat() {
   const { data: session } = useSession();
   const router = useRouter();
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id as string;
   const myId = (session?.user as any)?.id ?? session?.user?.email ?? "";
   const myName = session?.user?.name ?? "User";
 

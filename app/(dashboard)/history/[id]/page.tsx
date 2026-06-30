@@ -23,7 +23,8 @@ const difficultyColors: Record<string, string> = {
 export default function HistoryDetailPage() {
   const { data: session } = useSession();
   const router = useRouter();
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id as string;
   const userId = (session?.user as any)?.id ?? session?.user?.email ?? "";
 
   const [problem, setProblem] = useState<any>(null);
