@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HeroGraph } from "./HeroGraph";
-import { SolvexaAILogo } from "@/components/ui/Logo";
+import { LogoWhite } from "@/components/ui/Logo";
 
 
 export function Hero() {
@@ -36,7 +36,7 @@ export function Hero() {
             </p>
 
             {/* Logo as headline */}
-            <SolvexaAILogo white className="text-[3rem] sm:text-[4rem] lg:text-[clamp(3rem,6vw,5rem)]" />
+            <LogoWhite className="text-[3rem] sm:text-[4rem] lg:text-[clamp(3rem,6vw,5rem)]" />
 
             {/* Subtext */}
             <p className="mt-8 text-sm sm:text-base leading-relaxed text-white/50">

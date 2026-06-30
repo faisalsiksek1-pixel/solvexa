@@ -30,11 +30,8 @@ export function Logo({ className, white = false }: LogoProps) {
   return (
     <div className={cn("flex items-center", className)}>
       <span
-        className={cn(
-          "font-['var(--font-cormorant)'] italic text-[1.6rem] leading-none tracking-tight select-none",
-          textColor
-        )}
-        style={{ fontFamily: "var(--font-cormorant), serif" }}
+        className={cn("italic leading-none tracking-tight select-none", textColor)}
+        style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "inherit" }}
       >
         ∫
         <span className={blueColor}>θ</span>
