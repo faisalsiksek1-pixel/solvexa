@@ -36,10 +36,10 @@ export function Hero() {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-[clamp(2.8rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight text-white">
-              Mathematics,
+              Learn, get unstuck,
               <br />
               <span className="relative inline-block">
-                <span className="gradient-text-hero">understood.</span>
+                <span className="gradient-text-hero">help others.</span>
                 <svg
                   className="absolute -bottom-2 sm:-bottom-3 left-0 w-full"
                   viewBox="0 0 300 12"
