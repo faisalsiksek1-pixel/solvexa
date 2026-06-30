@@ -2,89 +2,141 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { HeroGraph } from "./HeroGraph";
+
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen bg-[#07061a] overflow-hidden flex flex-col">
+    <section className="relative min-h-screen bg-[#07061a] overflow-hidden flex items-center">
       {/* Ambient blobs */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 left-1/4 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-brand-600/10 blur-[140px]" />
-        <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] translate-y-1/3 rounded-full bg-violet-700/8 blur-[100px]" />
+        <div className="absolute top-0 left-1/4 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-brand-600/10 blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] translate-y-1/3 rounded-full bg-violet-700/10 blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-900/20 blur-[80px]" />
       </div>
 
       {/* Dot grid */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: "radial-gradient(circle, #818cf8 1px, transparent 1px)",
-          backgroundSize: "36px 36px",
+          backgroundSize: "32px 32px",
         }}
       />
 
-      {/* Nav */}
-      <nav className="relative z-10 flex items-center justify-between px-6 sm:px-10 py-6 max-w-7xl mx-auto w-full">
-        <p className="text-white font-semibold text-sm tracking-wide">Solvexa</p>
-        <div className="flex items-center gap-6">
-          <Link href="/login" className="text-xs text-white/50 hover:text-white transition">Sign in</Link>
-          <Link href="/signup" className="rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/15 transition">
-            Get started
-          </Link>
-        </div>
-      </nav>
+      <div className="relative w-full mx-auto max-w-7xl px-5 sm:px-6 pt-28 pb-16 lg:py-0 lg:min-h-screen lg:flex lg:items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-8 items-center w-full">
 
-      {/* Hero content */}
-      <div className="relative flex-1 flex flex-col items-center justify-center text-center px-5 pb-24 pt-12">
-
-        {/* Location tag */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
-          <span className="text-xs text-white/40 tracking-wide">🇦🇪 UAE &nbsp;·&nbsp; 🇧🇷 Brazil</span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.02] max-w-3xl">
-          Study together.<br />
-          <span className="text-white/30">Get unstuck.</span>
-        </h1>
-
-        {/* Subtext */}
-        <p className="mt-6 text-sm sm:text-base text-white/40 max-w-md leading-relaxed">
-          A space for maths students to solve problems, find tutors, and learn with each other — not alone.
-        </p>
-
-        {/* CTA */}
-        <div className="mt-10 flex items-center gap-3">
-          <Link
-            href="/signup"
-            className="group inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/40 hover:bg-brand-500 transition-all hover:-translate-y-0.5"
-          >
-            Join for free
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </div>
-
-        {/* Two feature cards */}
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl w-full">
-          <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-6 text-left backdrop-blur-sm hover:bg-white/[0.05] transition">
-            <div className="h-8 w-8 rounded-xl bg-brand-600/20 flex items-center justify-center mb-4">
-              <span className="text-brand-400 text-sm">∑</span>
-            </div>
-            <p className="text-sm font-semibold text-white mb-1.5">Solve any problem</p>
-            <p className="text-xs text-white/35 leading-relaxed">
-              Type or photo a question. Get a full step-by-step breakdown — not just the answer.
+          {/* ── LEFT ── */}
+          <div className="flex flex-col items-start">
+            {/* Motto */}
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
+              Learn · Get unstuck · Help others
             </p>
-          </div>
-          <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-6 text-left backdrop-blur-sm hover:bg-white/[0.05] transition">
-            <div className="h-8 w-8 rounded-xl bg-violet-600/20 flex items-center justify-center mb-4">
-              <span className="text-violet-400 text-sm">#</span>
-            </div>
-            <p className="text-sm font-semibold text-white mb-1.5">Find your people</p>
-            <p className="text-xs text-white/35 leading-relaxed">
-              Join communities, message tutors, and study with students from the UAE and Brazil.
+
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[clamp(2.8rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight text-white">
+              Stop guessing.
+              <br />
+              <span className="relative inline-block">
+                <span className="gradient-text-hero">Start solving.</span>
+                <svg
+                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full"
+                  viewBox="0 0 300 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 7 C30 2, 60 12, 90 7 S150 2, 180 7 S240 12, 270 7 S295 4, 298 6"
+                    stroke="url(#squiggleGrad)"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                  <defs>
+                    <linearGradient id="squiggleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#6366f1" />
+                      <stop offset="100%" stopColor="#a78bfa" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+            </h1>
+
+            {/* Subtext */}
+            <p className="mt-8 text-sm sm:text-base leading-relaxed text-white/50">
+              For students, by students.
             </p>
+
+            {/* CTAs */}
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+              <Link
+                href="/signup"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-900/40 transition-all duration-200 hover:bg-brand-500 hover:-translate-y-0.5 active:scale-[0.97]"
+              >
+                Join Solvexa
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/login"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:text-white"
+              >
+                Sign in
+              </Link>
+            </div>
+
+          </div>
+
+          {/* ── RIGHT: Graph — hidden on small screens ── */}
+          <div className="relative hidden md:flex items-center justify-center lg:h-[560px]">
+            <div className="relative w-full max-w-[520px] rounded-2xl lg:rounded-3xl border border-white/8 bg-white/[0.03] p-4 sm:p-6 backdrop-blur-sm shadow-2xl">
+              {/* Card header */}
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-brand-500" />
+                  <span className="text-xs font-mono font-medium text-white/40">
+                    f(x) = x² — live explorer
+                  </span>
+                </div>
+                <div className="flex gap-1.5">
+                  <div className="h-2.5 w-2.5 rounded-full bg-white/10" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-white/10" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-white/10" />
+                </div>
+              </div>
+
+              {/* Graph */}
+              <div className="h-[280px] sm:h-[360px]">
+                <HeroGraph />
+              </div>
+
+              {/* Bottom strip */}
+              <div className="mt-4 grid grid-cols-3 gap-2">
+                {[
+                  { label: "Function", value: "f(x) = x²" },
+                  { label: "Derivative", value: "f′(x) = 2x" },
+                  { label: "Vertex", value: "(0, 0)" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-xl bg-white/5 border border-white/8 px-2 py-2 text-center"
+                  >
+                    <p className="text-[9px] sm:text-[10px] text-white/30 font-medium uppercase tracking-wider mb-0.5">
+                      {item.label}
+                    </p>
+                    <p className="text-xs font-mono font-semibold text-white/70">
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
-
       </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
     </section>
   );
 }
