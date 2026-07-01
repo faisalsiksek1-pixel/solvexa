@@ -30,21 +30,27 @@ function MessageModal({ tutor, onClose }: { tutor: Tutor; onClose: () => void })
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
 
   async function send() {
     if (!message.trim() || sending) return;
     setSending(true);
+    setSendError("");
     const myId = (session?.user as any)?.id ?? session?.user?.email ?? "";
     const myName = session?.user?.name ?? "Student";
-    await supabase.from("messages").insert({
+    const { error } = await supabase.from("messages").insert({
       from_id: myId,
       to_id: tutor.id,
       from_name: myName,
       to_name: tutor.name,
       content: message.trim(),
     });
-    setSent(true);
     setSending(false);
+    if (error) {
+      setSendError(error.message);
+      return;
+    }
+    setSent(true);
     setTimeout(() => { onClose(); router.push("/messages"); }, 1200);
   }
 
@@ -83,6 +89,9 @@ function MessageModal({ tutor, onClose }: { tutor: Tutor; onClose: () => void })
               className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-400 focus:bg-white transition resize-none"
               autoFocus
             />
+            {sendError && (
+              <p className="mt-2 text-xs text-red-600">{sendError}</p>
+            )}
             <div className="mt-4 flex gap-3">
               <button onClick={onClose} className="flex-1 rounded-xl border border-slate-200 py-2.5 text-sm text-slate-600 hover:bg-slate-50 transition">Cancel</button>
               <button onClick={send} disabled={!message.trim() || sending}
