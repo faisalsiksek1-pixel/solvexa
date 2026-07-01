@@ -14,9 +14,9 @@ export async function GET() {
 
   const { data } = await supabase
     .from("profiles")
-    .select("role")
+    .select("role, avatar_url")
     .eq("id", userId)
     .single();
 
-  return NextResponse.json({ role: data?.role ?? "student" });
+  return NextResponse.json({ role: data?.role ?? "student", avatar_url: data?.avatar_url ?? null });
 }

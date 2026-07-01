@@ -32,9 +32,13 @@ export function Sidebar() {
   const { data: session } = useSession();
   const name = session?.user?.name ?? "";
   const [isTutor, setIsTutor] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/me").then((r) => r.json()).then((d) => setIsTutor(d.role === "tutor"));
+    fetch("/api/me").then((r) => r.json()).then((d) => {
+      setIsTutor(d.role === "tutor");
+      setAvatarUrl(d.avatar_url ?? null);
+    });
   }, []);
 
   return (
@@ -90,7 +94,7 @@ export function Sidebar() {
       {/* User profile */}
       <div className="border-t border-slate-100 p-3">
         <Link href="/profile" className="flex items-center gap-3 rounded-xl px-2 py-2.5 hover:bg-slate-50 transition-colors cursor-pointer group">
-          <Avatar name={name} size="sm" />
+          <Avatar name={name} size="sm" src={avatarUrl} />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-slate-900 truncate">{name}</p>
           </div>

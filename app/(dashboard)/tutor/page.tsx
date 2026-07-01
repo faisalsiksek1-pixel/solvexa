@@ -32,6 +32,7 @@ export default function TutorDashboard() {
   const [bio, setBio] = useState("");
   const [subjects, setSubjects] = useState<string[]>([]);
   const [availability, setAvailability] = useState<string[]>([]);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [requests, setRequests] = useState(MOCK_REQUESTS);
   const [editingProfile, setEditingProfile] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -50,6 +51,7 @@ export default function TutorDashboard() {
           setBio(p.tutor_bio ?? "");
           setSubjects(p.subjects ?? []);
           setAvailability(p.availability ?? []);
+          setAvatarUrl(p.avatar_url ?? null);
         }
         setLoading(false);
       });
@@ -102,7 +104,7 @@ export default function TutorDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
-          <Avatar name={session?.user?.name ?? "T"} size="lg" />
+          <Avatar name={session?.user?.name ?? "T"} size="lg" src={avatarUrl} />
           <div>
             <h1 className="text-xl font-bold text-slate-900">{session?.user?.name}</h1>
             <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Tutor</span>
