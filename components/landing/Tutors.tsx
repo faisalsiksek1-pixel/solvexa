@@ -1,7 +1,13 @@
+import { FloatingMathSymbols, buildEvenSymbols } from "./FloatingMathSymbols";
+
+const tutorSymbols = buildEvenSymbols(["ƒ", "∂", "±", "θ"]);
+
 export function Tutors() {
   return (
-    <section id="tutors" className="bg-white py-14 sm:py-20">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <section id="tutors" className="relative bg-white py-14 sm:py-20 overflow-hidden">
+      <FloatingMathSymbols symbols={tutorSymbols} theme="light" />
+
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
@@ -17,7 +23,7 @@ export function Tutors() {
               If you're good at maths and want to help others, become a tutor on Solvexa. Work with students on your own schedule.
             </p>
             <a
-              href="mailto:hello@solvexa.app"
+              href="mailto:solvexa.math@gmail.com?subject=Tutor%20Application"
               className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-500 transition-colors"
             >
               Apply as a tutor
@@ -28,7 +34,7 @@ export function Tutors() {
           <div className="grid grid-cols-2 gap-3">
             {[
               { title: "Your own schedule", body: "Take sessions when it works for you." },
-              { title: "Global students", body: "Students from anywhere in the world." },
+              { title: "Fully free", body: "No cost to book or run a session." },
               { title: "Any level", body: "From GCSE to IB to ENEM." },
               { title: "Real experience", body: "Teaching is the best way to learn." },
             ].map((item) => (

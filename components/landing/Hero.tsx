@@ -4,7 +4,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HeroGraph } from "./HeroGraph";
 import { LogoWhite } from "@/components/ui/Logo";
+import { FloatingMathSymbols, buildEvenSymbols } from "./FloatingMathSymbols";
 
+const heroSymbols = buildEvenSymbols(["∫", "∑", "θ", "√", "Δ", "∞"]);
 
 export function Hero() {
   return (
@@ -24,6 +26,8 @@ export function Hero() {
           backgroundSize: "32px 32px",
         }}
       />
+
+      <FloatingMathSymbols symbols={heroSymbols} theme="dark" />
 
       <div className="relative w-full mx-auto max-w-7xl px-5 sm:px-6 pt-28 pb-16 lg:py-0 lg:min-h-screen lg:flex lg:items-center">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-8 items-center w-full">

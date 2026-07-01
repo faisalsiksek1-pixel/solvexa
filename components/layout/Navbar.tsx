@@ -8,7 +8,6 @@ import { SolvexaLogo } from "@/components/ui/SolvexaLogo";
 
 const navLinks = [
   { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
 ];
 
 export function Navbar() {
