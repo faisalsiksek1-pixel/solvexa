@@ -19,10 +19,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/login",
   },
   callbacks: {
-    async signIn({ user }) {
-      if (user.id && user.email) {
+    async signIn({ user, profile }) {
+      const id = (profile as any)?.sub ?? user.id;
+      if (id && user.email) {
         const { error } = await supabaseAdmin.from("profiles").upsert(
-          { id: user.id, name: user.name ?? "", email: user.email },
+          { id, name: user.name ?? "", email: user.email },
           { onConflict: "id" }
         );
         if (error) console.error("Supabase signIn upsert error:", error);
@@ -31,7 +32,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     async jwt({ token, account, profile }) {
       if (account && profile) {
-        token.sub = token.sub ?? (profile as any).sub;
+        token.sub = (profile as any).sub;
       }
       return token;
     },
